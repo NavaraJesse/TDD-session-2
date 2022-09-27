@@ -5,8 +5,9 @@ function convert(number) {
     while(number > 0) {
         for(let i = 0; i < numbers.length; i++ ) {
             if (number >= numbers[i]) {
-                result = result + romanNumerals[i]
-                number = number - numbers[i]
+                result += romanNumerals[i]
+                number -= numbers[i]
+                break
             }
         }
     }
