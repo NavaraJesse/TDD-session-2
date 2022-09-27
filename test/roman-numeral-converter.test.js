@@ -46,6 +46,14 @@ describe("The roman converter", () => {
         {
             integer: 11,
             romanNumeral: "XI"
+        },
+        {
+            integer: 14,
+            romanNumeral: "XIV"
+        },
+        {
+            integer: 15,
+            romanNumeral: "XV"
         }
     ].forEach(({integer, romanNumeral}) => {
         it(`should convert ${integer} to ${romanNumeral}`,
