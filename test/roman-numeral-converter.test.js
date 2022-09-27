@@ -2,13 +2,23 @@ const assert = require("assert");
 const convert = require("../roman-numeral-converter");
 
 describe("The roman converter", () => {
-    it("should convert 1 to I", () => {
-        assert.strictEqual(convert(1),"I")
-    })
-    it("should convert 2 to II", () => {
-        assert.strictEqual(convert(2), "II")
-    })
-    it("should convert 3 to III", () => {
-        assert.strictEqual(convert(3), "III")
+    [
+        {
+            integer: 1,
+            romanNumeral: "I"
+        },
+        {
+            integer: 2,
+            romanNumeral: "II"
+        },
+        {
+            integer: 3,
+            romanNumeral: "III"
+        }
+    ].forEach(({integer, romanNumeral}) => {
+        it(`should convert ${integer} to ${romanNumeral}`,
+            () => {
+                assert.strictEqual(convert(integer), romanNumeral);
+            })
     })
 })
