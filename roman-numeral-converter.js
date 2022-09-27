@@ -1,21 +1,13 @@
 function convert(number) {
     let result = "";
+    const numbers = [9, 5, 4, 1]
+    const romanNumerals = ["IX", "V", "IV", "I"]
     while(number > 0) {
-        if (number >= 9) {
-            result = result + "IX"
-            number = number - 9
-        }
-        if (number >= 5) {
-            result = result + "V";
-            number = number - 5
-        }
-        if (number >= 4) {
-            result = result + "IV"
-            number = number - 4
-        }
-        if (number >= 1) {
-            result = result + "I"
-            number = number - 1
+        for(let i = 0; i < numbers.length; i++ ) {
+            if (number >= numbers[i]) {
+                result = result + romanNumerals[i]
+                number = number - numbers[i]
+            }
         }
     }
     return result
