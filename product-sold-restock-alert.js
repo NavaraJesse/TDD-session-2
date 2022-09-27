@@ -1,6 +1,6 @@
 
-function sell(event) {
-    if(event.restockLevel >= (event.stock - event.quantity))
+function sell(event, getProduct, calculateRestockLevel) {
+    if(calculateRestockLevel(event.productId) >= (getProduct().stock - event.quantity))
         return { alert: true };
     return { alert: false }
 }
