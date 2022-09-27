@@ -1,8 +1,5 @@
 const assert = require("assert");
-
-function convert(number) {
-    return "I";
-}
+const convert = require("../roman-numeral-converter");
 
 describe("The roman converter", () => {
     it("should convert 1 to I", () => {
