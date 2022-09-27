@@ -14,9 +14,7 @@ function convert(number) {
             number = number - 1
         }
     }
-    if (result.length > 0) {
-        return result
-    }
+    return result
 }
 
 module.exports = convert
