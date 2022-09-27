@@ -1,15 +1,21 @@
 function convert(number) {
-    switch (number) {
-        case 4:
-            return "IV"
-        case 5:
-            return "V"
-        case 6:
-            return "VI"
-        case 7:
-            return "VII"
-        default:
-            return "I".repeat(number)
+    let result = "";
+    while(number > 0) {
+        if (number >= 5) {
+            result = result + "V";
+            number = number - 5
+        }
+        if (number === 4) {
+            result = "IV"
+            number = 0
+        }
+        if (number > 0) {
+            result = result + "I"
+            number = number - 1
+        }
+    }
+    if (result.length > 0) {
+        return result
     }
 }
 
