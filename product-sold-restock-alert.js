@@ -1,8 +1,7 @@
 
-function sell(event, getProduct, calculateRestockLevel) {
+function sell(event, getProduct, calculateRestockLevel, messageSender) {
     if(calculateRestockLevel(event.productId) >= (getProduct().stock - event.quantity))
-        return { alert: true };
-    return { alert: false }
+        messageSender.sendAlert()
 }
 
 module.exports = sell

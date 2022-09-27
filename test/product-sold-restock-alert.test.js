@@ -8,7 +8,7 @@ describe("Product sold - Restock Alert", () => {
             quantity: 1
         }
 
-        function getProduct(productId) {
+        function getStock(productId) {
             return { stock: 25 }
         }
 
@@ -16,17 +16,19 @@ describe("Product sold - Restock Alert", () => {
             return 24
         }
 
-        assert.deepEqual(sell(event, getProduct, calculateRestockLevel), { alert: true })
+        const messageSender = { sendAlert() { this.sent = true} };
+
+        sell(event, getStock, calculateRestockLevel, messageSender)
+
+        assert.deepEqual(messageSender.sent, true)
     })
     it("should send no alert when a sale is made that does not take a product beyond its restock level", () => {
         const event = {
             productId: 811,
-            stock: 26,
-            restockLevel: 24,
             quantity: 1
         }
 
-        function getProduct(productId) {
+        function getStock(productId) {
             return { stock: 26 }
         }
 
@@ -34,6 +36,10 @@ describe("Product sold - Restock Alert", () => {
             return 24
         }
 
-        assert.deepEqual(sell(event, getProduct, calculateRestockLevel), { alert: false })
+        const messageSender = { sendAlert() { this.sent = true} }
+
+        sell(event, getStock, calculateRestockLevel, messageSender)
+
+        assert.deepEqual(messageSender.sent, undefined)
     })
 })
